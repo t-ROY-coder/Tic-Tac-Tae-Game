@@ -14,6 +14,9 @@ class TicTacToe(Frame):
         self.master.bind("<Motion>", self.hover_in)
         self.master.bind("<Leave>", self.hover_out)
         self.grid_cells = []
+        self.score_man = 0
+        self.score_mach = 0
+        self.score_draw = 0
         self.init_grid()
         self.init_matrix()
         # update UI (set cell bg color and cell text color)
@@ -56,7 +59,8 @@ class TicTacToe(Frame):
             for j in range(c.GRID_LEN):
                 new_num = self.matrix[i][j]
                 if new_num == 0:
-                    self.grid_cells[i][j].configure(text = "", bg = c.BG_COLOR_EMP_CELL)
+                    self.grid_cells[i][j].configure(text = "", bg = c.BG_COLOR_EMP_CELL,
+                    relief = RAISED)
                 elif new_num == 1:
                     self.grid_cells[i][j].configure(text = "X",
                     bg = c.BG_COLOR_EMP_CELL, fg = c.CELL_TXT_COLOR, relief = SUNKEN)
@@ -78,21 +82,39 @@ class TicTacToe(Frame):
         x = event.x_root - self.bg.winfo_rootx() 
         y = event.y_root - self.bg.winfo_rooty()
         z = self.bg.grid_location(x, y)
+        if z[0] not in {0,1,2} or z[1] not in {0,1,2}:
+            return
         pos = (z[1], z[0])
         Logics.fill(self.matrix, pos)
         self.update_grid_cells()
         state = Logics.game_state(self.matrix)
         if state is not None:
+            if state == 1:
+                self.score_mach += 1
+            elif state == -1:
+                self.score_man += 1
+            else:
+                self.score_draw += 1
             self.turn = -self.turn
             self.matrix = Logics.start_game(self.turn)
             print('Game OVER')
+            print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
+            self.update_grid_cells()
             return
         Logics.best_move(self.matrix)
         self.update_grid_cells()
         state = Logics.game_state(self.matrix)
         if state is not None:
+            if state == 1:
+                self.score_mach += 1
+            elif state == -1:
+                self.score_man += 1
+            else:
+                self.score_draw += 1
             self.turn = -self.turn
             self.matrix = Logics.start_game(self.turn)
             print('Game OVER')
+            print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
+            self.update_grid_cells()
 
 game = TicTacToe()
