@@ -26,7 +26,7 @@ class TicTacToe(Frame):
         background = Frame(self, bg = c.BG_COLOR_GAME, width = c.SIZE, height = c.SIZE)
         # visualizing background in grid form
         background.grid()
-
+        self.bg = background
         for i in range(c.GRID_LEN):
             grid_row = []
             for j in range(c.GRID_LEN):
@@ -75,16 +75,17 @@ class TicTacToe(Frame):
             event.widget.configure(bg = c.BG_COLOR_EMP_CELL)
 
     def button_pressed(self, event):
-        #pos = self.widget_pos[event.widget]
-        #print(pos)
-        pos = (1,1)
+        x = event.x_root - self.bg.winfo_rootx() 
+        y = event.y_root - self.bg.winfo_rooty()
+        z = self.bg.grid_location(x, y)
+        pos = (z[1], z[0])
         Logics.fill(self.matrix, pos)
         self.update_grid_cells()
         state = Logics.game_state(self.matrix)
         if state is not None:
             self.turn = -self.turn
             self.matrix = Logics.start_game(self.turn)
-            print('Game OVER, O Wins')
+            print('Game OVER')
             return
         Logics.best_move(self.matrix)
         self.update_grid_cells()
@@ -92,6 +93,6 @@ class TicTacToe(Frame):
         if state is not None:
             self.turn = -self.turn
             self.matrix = Logics.start_game(self.turn)
-            print('Game OVER, X Wins')
+            print('Game OVER')
 
 game = TicTacToe()
