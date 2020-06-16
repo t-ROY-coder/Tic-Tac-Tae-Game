@@ -8,7 +8,7 @@ class TicTacToe(Frame):
         Frame.__init__(self)
         # visualizing Frame in grid form
         self.grid()
-        self.master.title('Tic-Tac-Toe')
+        self.master.title('XOXO')
         # binding the control, i.e., if any key is pressed go to key_pressed function
         self.master.bind("<Button-1>", self.button_pressed)
         self.master.bind("<Return>", self.key_pressed)
@@ -49,6 +49,12 @@ class TicTacToe(Frame):
                 grid_row.append(t)
 
             self.grid_cells.append(grid_row)
+
+            #for i in range(3):
+                #panel = Frame(self.bg, bg = c.BG_COLOR_EMP_CELL, height = 50, width = 250)
+                #panel.grid(row = 4, column = i)
+                #txt = Label(master = panel, text = "XO", fg = c.CELL_TXT_COLOR,
+                #justify = CENTER, font = c.FONT)
     
     def init_matrix(self):
         self.turn = -1
