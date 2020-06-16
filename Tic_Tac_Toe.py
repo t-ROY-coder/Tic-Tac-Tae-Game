@@ -1,4 +1,4 @@
-from tkinter import Frame, Label, CENTER, RAISED, SUNKEN
+from tkinter import Frame, Label, CENTER, RAISED, SUNKEN, FLAT
 
 import Logics
 import constants as c
@@ -61,7 +61,7 @@ class TicTacToe(Frame):
                 new_num = self.matrix[i][j]
                 if new_num == 0:
                     self.grid_cells[i][j].configure(text = "", bg = c.BG_COLOR_EMP_CELL,
-                    relief = RAISED)
+                    relief = FLAT)
                 elif new_num == 1:
                     self.grid_cells[i][j].configure(text = "X",
                     bg = c.BG_COLOR_EMP_CELL, fg = c.CELL_TXT_COLOR, relief = SUNKEN)
@@ -114,11 +114,15 @@ class TicTacToe(Frame):
             else:
                 self.score_draw += 1
             self.turn = -self.turn
-            
+
     def key_pressed(self, event):
         self.matrix = Logics.start_game(self.turn)
         print('Game OVER')
         print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
         self.update_grid_cells()
+
+#print('Enter your name:')
+#s = input()
+#print(s)
 
 game = TicTacToe()
