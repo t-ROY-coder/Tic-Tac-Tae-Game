@@ -7,7 +7,7 @@ Prerequisites:
 
 Get the game:
 1. Pull/Download the repository
-2. Open the .exe file in dist folder
+2. Open the .exe file in "dist" folder -or- Run the Tic_Tac_Toe.py file
 
 Instructions to play:
 1. Click on one of the boxes to do the move
