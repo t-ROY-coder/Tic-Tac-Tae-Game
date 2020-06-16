@@ -1031,13 +1031,13 @@
    'c:\\users\\tanumon '
    'roy\\appdata\\local\\programs\\python\\python38\\lib\\stat.py',
    'PYMODULE'),
-  ('stringprep',
-   'c:\\users\\tanumon '
-   'roy\\appdata\\local\\programs\\python\\python38\\lib\\stringprep.py',
-   'PYMODULE'),
   ('_py_abc',
    'c:\\users\\tanumon '
    'roy\\appdata\\local\\programs\\python\\python38\\lib\\_py_abc.py',
+   'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\tanumon '
+   'roy\\appdata\\local\\programs\\python\\python38\\lib\\stringprep.py',
    'PYMODULE'),
   ('constants',
    'E:\\Academics\\ACS\\Tic-Tac-Toe Proj\\Game\\constants.py',
