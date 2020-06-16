@@ -48,8 +48,6 @@ def fill(mat, pos):
     y = pos[1]
     if mat[x][y] == 0:
         mat[x][y] = -1
-    else:
-        print('Already filled')
 
 def best_move(mat):
     best_score = [-float('inf')]
