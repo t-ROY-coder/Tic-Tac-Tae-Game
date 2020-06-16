@@ -4,20 +4,21 @@ import Logics
 import constants as c
 
 class TicTacToe(Frame):
-    def __init__(self):
+    def __init__(self, username):
         Frame.__init__(self)
         # visualizing Frame in grid form
         self.grid()
-        self.master.title('XOXO')
+        self.score_man = 0
+        self.score_mach = 0
+        self.score_draw = 0
+        self.master.title('{:10}Scores [ {} : {} ; Bot : {} ; Draw : {} ]'.format('XOXO', username,
+        self.score_man, self.score_mach, self.score_draw))
         # binding the control, i.e., if any key is pressed go to key_pressed function
         self.master.bind("<Button-1>", self.button_pressed)
         self.master.bind("<Return>", self.key_pressed)
         self.master.bind("<Motion>", self.hover_in)
         self.master.bind("<Leave>", self.hover_out)
         self.grid_cells = []
-        self.score_man = 0
-        self.score_mach = 0
-        self.score_draw = 0
         self.init_grid()
         self.init_matrix()
         # update UI (set cell bg color and cell text color)
@@ -121,8 +122,9 @@ class TicTacToe(Frame):
         print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
         self.update_grid_cells()
 
-#print('Enter your name:')
-#s = input()
-#print(s)
+print("Hello, I'm Bot. Let's play Tic-Tac-Toe.")
+print("What's your name?")
+username = input()
+print("OK", username,", let's see if you can beat me.")
 
-game = TicTacToe()
+game = TicTacToe(username)
