@@ -11,6 +11,7 @@ class TicTacToe(Frame):
         self.master.title('Tic-Tac-Toe')
         # binding the control, i.e., if any key is pressed go to key_pressed function
         self.master.bind("<Button-1>", self.button_pressed)
+        self.master.bind("<Return>", self.key_pressed)
         self.master.bind("<Motion>", self.hover_in)
         self.master.bind("<Leave>", self.hover_out)
         self.grid_cells = []
@@ -79,12 +80,17 @@ class TicTacToe(Frame):
             event.widget.configure(bg = c.BG_COLOR_EMP_CELL)
 
     def button_pressed(self, event):
+        state = Logics.game_state(self.matrix)
+        if state is not None:
+            return
         x = event.x_root - self.bg.winfo_rootx() 
         y = event.y_root - self.bg.winfo_rooty()
         z = self.bg.grid_location(x, y)
         if z[0] not in {0,1,2} or z[1] not in {0,1,2}:
             return
         pos = (z[1], z[0])
+        if self.matrix[pos[0]][pos[1]] != 0:
+            return
         Logics.fill(self.matrix, pos)
         self.update_grid_cells()
         state = Logics.game_state(self.matrix)
@@ -96,10 +102,6 @@ class TicTacToe(Frame):
             else:
                 self.score_draw += 1
             self.turn = -self.turn
-            self.matrix = Logics.start_game(self.turn)
-            print('Game OVER')
-            print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
-            self.update_grid_cells()
             return
         Logics.best_move(self.matrix)
         self.update_grid_cells()
@@ -112,9 +114,11 @@ class TicTacToe(Frame):
             else:
                 self.score_draw += 1
             self.turn = -self.turn
-            self.matrix = Logics.start_game(self.turn)
-            print('Game OVER')
-            print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
-            self.update_grid_cells()
+            
+    def key_pressed(self, event):
+        self.matrix = Logics.start_game(self.turn)
+        print('Game OVER')
+        print('MAN:', self.score_man, 'MACHINE:', self.score_mach, 'DRAW:', self.score_draw)
+        self.update_grid_cells()
 
 game = TicTacToe()
