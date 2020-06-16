@@ -3971,7 +3971,7 @@
  [],
  False,
  False,
- 1592330996,
+ 1592331354,
  [('run.exe',
    'c:\\users\\tanumon '
    'roy\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
