@@ -8,4 +8,4 @@ BG_COLOR_HOVER_CELL = "#555555"
 CELL_TXT_COLOR = "#999999"
 CELL_TXT_WIN_COLOR = "#FFFF66"
 
-FONT = ("Verdana", 50, "bold")
+FONT = ("Verdana", 40, "bold")

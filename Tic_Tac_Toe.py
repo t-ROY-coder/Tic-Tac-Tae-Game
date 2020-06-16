@@ -44,7 +44,7 @@ class TicTacToe(Frame):
 
                 # making the textbox(Label) inside cell which will contain the numbers
                 t = Label(master = cell, text = "", bg = c.BG_COLOR_EMP_CELL,
-                justify = CENTER, font = c.FONT, width = 5, height = 2)
+                justify = CENTER, font = c.FONT, width = 4, height = 2)
 
                 t.grid()
                 grid_row.append(t)
