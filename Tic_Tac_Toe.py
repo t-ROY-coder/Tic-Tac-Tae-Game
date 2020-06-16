@@ -49,12 +49,6 @@ class TicTacToe(Frame):
                 grid_row.append(t)
 
             self.grid_cells.append(grid_row)
-
-            #for i in range(3):
-                #panel = Frame(self.bg, bg = c.BG_COLOR_EMP_CELL, height = 50, width = 250)
-                #panel.grid(row = 4, column = i)
-                #txt = Label(master = panel, text = "XO", fg = c.CELL_TXT_COLOR,
-                #justify = CENTER, font = c.FONT)
     
     def init_matrix(self):
         self.turn = -1
