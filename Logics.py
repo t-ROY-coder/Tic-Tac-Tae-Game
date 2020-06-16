@@ -43,6 +43,24 @@ def game_state(ele):
                 return
     return 0
 
+def get_win_pos(ele, state):
+    if state == 0 or state is None:
+        return
+    for i in range(3):
+        if ele[i][0] == ele[i][1] and ele[i][1] == ele[i][2]:
+            if ele[i][0] == state:
+                return ['r', i]
+    for j in range(3):
+        if ele[0][j] == ele[1][j] and ele[1][j] == ele[2][j]:
+            if ele[0][j] == state:
+                return ['c', j]
+    if ele[0][0] == ele[1][1] and ele[1][1] == ele[2][2]:
+        if ele[1][1] == state:
+            return ['ld']
+    if ele[0][2] == ele[1][1] and ele[1][1] == ele[2][0]:
+        if ele[1][1] == state:
+            return ['od']
+
 def fill(mat, pos):
     x = pos[0]
     y = pos[1]

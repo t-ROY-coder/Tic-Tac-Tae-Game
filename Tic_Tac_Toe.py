@@ -69,6 +69,23 @@ class TicTacToe(Frame):
                 else:
                     self.grid_cells[i][j].configure(text = "O",
                     bg = c.BG_COLOR_EMP_CELL, fg = c.CELL_TXT_COLOR, relief = SUNKEN)
+        
+        state = Logics.game_state(self.matrix)
+        if state in {1,-1}:
+            win_pos = Logics.get_win_pos(self.matrix, state)
+            if win_pos[0] == 'r':
+                for j in range(3):
+                    self.grid_cells[win_pos[1]][j].configure(fg = c.CELL_TXT_WIN_COLOR)
+            elif win_pos[0] == 'c':
+                for i in range(3):
+                    self.grid_cells[i][win_pos[1]].configure(fg = c.CELL_TXT_WIN_COLOR)
+            elif win_pos[0] == 'ld':
+                for i in range(3):
+                    self.grid_cells[i][i].configure(fg = c.CELL_TXT_WIN_COLOR)
+            elif win_pos[0] == 'od':
+                for i in range(3):
+                    self.grid_cells[2-i][i].configure(fg = c.CELL_TXT_WIN_COLOR)
+
         # waits until all UI changes are done
         self.update_idletasks()
 
