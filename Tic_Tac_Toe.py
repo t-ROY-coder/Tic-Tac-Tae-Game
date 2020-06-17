@@ -11,7 +11,7 @@ class TicTacToe(Frame):
         self.score_man = 0
         self.score_mach = 0
         self.score_draw = 0
-        self.master.title('{:10}Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ]'.format('XOXO', username,
+        self.master.title('{} - Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ]'.format('XOXO', username,
         self.score_man, self.score_mach, self.score_draw))
         # binding the control, i.e., if any key is pressed go to key_pressed function
         self.master.bind("<Button-1>", self.button_pressed)
@@ -120,7 +120,7 @@ class TicTacToe(Frame):
             else:
                 self.score_draw += 1
             self.turn = -self.turn
-            self.master.title('{:10}Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ]{:>40}'.format('XOXO', username,
+            self.master.title('{} - Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ] - {}'.format('XOXO', username,
             self.score_man, self.score_mach, self.score_draw, "Game OVER! (Press Enter for new game)"))
             return
         Logics.best_move(self.matrix)
@@ -134,11 +134,11 @@ class TicTacToe(Frame):
             else:
                 self.score_draw += 1
             self.turn = -self.turn
-            self.master.title('{:10}Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ]{:>40}'.format('XOXO', username,
+            self.master.title('{} - Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ] - {}'.format('XOXO', username,
             self.score_man, self.score_mach, self.score_draw, "Game OVER! (Press Enter for new game)"))
 
     def key_pressed(self, event):
-        self.master.title('{:10}Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ]'.format('XOXO', username,
+        self.master.title('{} - Scores [ {} : {} ; Royik (bot) : {} ; Draw : {} ]'.format('XOXO', username,
         self.score_man, self.score_mach, self.score_draw))
         self.matrix = Logics.start_game(self.turn)
         self.update_grid_cells()
