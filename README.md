@@ -1,5 +1,5 @@
 # Tic-Tac-Toe-Game
-Tic-Tac-Toe game designed in Python 3.x using Backtracking algorithm as the logic and Tkinter for the GUI.
+Tic-Tac-Toe game designed in Python 3.x using Backtracking logic (min-max algorithm) and Tkinter for the GUI.
 
 Prerequisites:
 1. Python 3.x installed
